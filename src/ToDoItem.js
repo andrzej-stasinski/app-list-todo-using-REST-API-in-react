@@ -11,9 +11,8 @@ class ToDoItem extends Component {
         this.setState({ done: !this.state.done });
     }
     render() {
-        console.log(this.props)
         return (
-            <div >
+            <div>
                 <div 
                     className={this.state.done ? "task doneTask" : 'task'}
                     onClick={this.toggleDone}

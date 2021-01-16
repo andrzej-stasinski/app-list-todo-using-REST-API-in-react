@@ -2,7 +2,8 @@
 
 #### progress
 * add task to list
-* mark task done in style as - line-through 
+* mark task done in style as line-through 
+* ...
 * to be continued
 
 

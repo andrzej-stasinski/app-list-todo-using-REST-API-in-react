@@ -25,7 +25,7 @@ class ToDoList extends Component {
   
     render() {
       return (
-        <div>
+        <div className='ToDoContainer'>
           <h2 className='title'>{this.props.title}</h2> 
             <div className='tasks'>
             {
