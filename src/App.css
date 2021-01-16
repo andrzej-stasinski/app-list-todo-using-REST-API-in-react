@@ -7,4 +7,13 @@ body {
 }
 .App {
     text-align: left;
+    padding: 10px;
+    border: 1px blue dotted;
+}
+.title {
+    margin-bottom: 10px;
+}
+.doneTask {
+    text-decoration: line-through;
+    color: red;
 }
