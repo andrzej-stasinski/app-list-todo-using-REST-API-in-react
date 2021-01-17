@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import ToDoItem from '../components/ToDoItem'
 import FormToDo from '../components/FormToDo'
 import {ToDoContainer, Title, Tasks, ErrorDiv} from './ToDoList.css'
+import {REST_API_URL} from '../utiles'
 
 class ToDoList extends Component {
 
@@ -10,17 +11,15 @@ class ToDoList extends Component {
       task: '',
     }
 
-    getData = () => {
-      fetch('http://localhost:3004/transactions')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        this.setState({ tasks: data });
-      })      
+    getData = async () => {   
+      const resp = await fetch(REST_API_URL)
+      console.log(resp)
+      const data = await resp.json()
+      console.log(data)
+      this.setState({ tasks: data });
     }
 
     componentDidMount() {
-      console.log('componentDidMount')
       this.getData()
     }
   
@@ -30,7 +29,7 @@ class ToDoList extends Component {
       this.setState({ task: e.target.value });
     }
 
-    addTask = (e) => {
+    addTask = async (e) => {
       e.preventDefault()
 
       if(this.state.task.length === 0) {
@@ -39,50 +38,39 @@ class ToDoList extends Component {
         return
       } else {
         this.refError.current.textContent = ''
-      }
-
-      // add task to REST API
-      // -----------------  
+      } 
+      
       const taskObj = {
         text: this.state.task,
         date: new Date().toLocaleString(),
         done: false,
       }
-      fetch('http://localhost:3004/transactions', {
+      const resp = await fetch(REST_API_URL, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
         },         
         body: JSON.stringify(taskObj)
       })
-      .then(() => {
-        console.log('Task Added')
-        this.setState({ task: '' });
-        this.getData()
-      })
-      .catch((err) => console.log('Task NOT added', err))          
+      const data = await resp.json()
+      console.log(data)
+      this.setState({ 
+        tasks: [...this.state.tasks, data],
+        task: '',
+      })          
     }
 
-    removeAll = () => {
-      this.setState({ tasks:  []  });
-    }
-
-    // task const to REST API
-    addJSON = () => {
-      const taskObj = {
-        text: 'New task',
-        date: new Date().toLocaleString(),
-        done: false,
-      }
-      fetch('http://localhost:3004/transactions', {
-        method: 'POST',
+    deleteTask = async (id) => {
+      console.log('deleteTask', id)
+      const resp = await fetch(`${REST_API_URL}/${id}`, {
+        method: 'DELETE',
         headers: {
           'Content-type': 'application/json',
         },         
-        body: JSON.stringify(taskObj)
       })
-      .then(() => console.log('Task Added'))
-      .catch((err) => console.log('Task NOT added', err))
+      const data = await resp.json()
+      console.log(data)
+      this.getData()      
     }
   
     render() {
@@ -98,6 +86,9 @@ class ToDoList extends Component {
                       id={task.id}
                       text={task.text} 
                       done={task.done}
+                      date={task.date}
+                      onGetData={this.getData}
+                      onDeleteTask={this.deleteTask}
                     />
                 ))
             }            
@@ -113,13 +104,6 @@ class ToDoList extends Component {
               taskValue={this.state.task}
               onAddTask={this.addTask}
             />
-
-            <br/>
-            <button onClick={this.removeAll}>Remove All tasks</button>
-
-            <br/><br/>
-            <button onClick={this.addJSON}>Add task to REST API</button>
-
      
         </ToDoContainer>
       )

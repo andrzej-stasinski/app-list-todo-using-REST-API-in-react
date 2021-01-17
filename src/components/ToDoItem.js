@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Item} from './ToDoItem.css'
+import {REST_API_URL} from '../utiles'
 class ToDoItem extends Component {
 
     static defaultProps = {
@@ -12,7 +13,7 @@ class ToDoItem extends Component {
 
     toggleDone = () => {
         // change done in REST API
-        fetch(`http://localhost:3004/transactions/${this.props.id}`, {
+        fetch(`${REST_API_URL}/${this.props.id}`, {
             method: 'PUT',
             headers: {
               'Content-type': 'application/json',
@@ -24,28 +25,32 @@ class ToDoItem extends Component {
             })
             })
             .then((res) => {
-              console.log('toggleDone ok')
-              console.log(res)
               if(res.ok) {
                 this.setState({ done: !this.state.done });
                 return res.json()
               }
             })
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                this.props.onGetData()
+            })
             .catch((err) => console.log('toggleDone no', err))      
     }
 
     render() {
-        console.log(this.props)
+
         return (
             <div>
-                <Item 
-                    done={this.state.done}
-                    onClick={this.toggleDone}
-                >
-                    {this.props.text}
-                </Item>
+            <Item 
+                done={this.state.done}
+                onClick={this.toggleDone}
+            >
+                <div>{this.props.text}</div>
+                <div>{this.props.date}</div>
+            </Item> 
+            <button onClick={() => this.props.onDeleteTask(this.props.id)}>DEL</button>           
             </div>
+
         )
     }
 }

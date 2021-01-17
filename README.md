@@ -7,7 +7,7 @@
 * validate input - prevents you from typing empty input, using Ref
 * get data from REST API & add task to REST & change property done in REST API
   - server REST API is needed
-  - data use in REST as example
+  - data in REST as example
   - [
         {
         "text": "Task 1 from REST API",
@@ -16,6 +16,7 @@
         "id": 1
         }
     ]
+* delete task
 * ...
 * to be continued
 
