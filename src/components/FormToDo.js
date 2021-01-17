@@ -1,19 +1,20 @@
 import React from 'react'
+import {Form, Input, Button} from './FormToDo.css'
 
 const FormToDo = ({onHandleInput, onAddTask, taskValue}) => {
     return (
-        <div className='form'>
-            <input 
+        <Form onSubmit={onAddTask}>
+            <Input 
                 type='text' 
-                value={taskValue} onChange={onHandleInput} 
-                className='form__input'
+                value={taskValue} 
+                onChange={onHandleInput} 
             /> 
-            <button onClick={onAddTask} 
-                className='form__button'
+            <Button 
+                type='submit' 
             >
                 Add
-            </button>                 
-        </div>
+            </Button>                 
+        </Form>
     )
 }
 export default FormToDo

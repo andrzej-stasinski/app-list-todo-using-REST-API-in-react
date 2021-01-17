@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {Item} from './ToDoItem.css'
 class ToDoItem extends Component {
     static defaultProps = {
         done: false,
@@ -15,12 +15,13 @@ class ToDoItem extends Component {
         // console.log(this.props)
         return (
             <div>
-                <div 
-                    className={this.state.done ? "task doneTask" : 'task'}
+                <Item 
+                    // className={this.state.done ? "task doneTask" : 'task'}
+                    done={this.state.done}
                     onClick={this.toggleDone}
                 >
                     {this.props.text}
-                </div>
+                </Item>
             </div>
         )
     }

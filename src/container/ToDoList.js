@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import ToDoItem from '../components/ToDoItem'
 import FormToDo from '../components/FormToDo'
+import {ToDoContainer, Title, Tasks, ErrorDiv} from './ToDoList.css'
 
-// 1 sposób przekazania do state
-const todo = [
-    {id: 1, text: 'to do some shopping', done: true},
-    {id: 2, text: 'to do breakfast', done: false},
-  ]
-  
 class ToDoList extends Component {
 
-    // 2 sposób przekazania do state
     static defaultProps = {
       todo: [
         {id: 1, text: 'to do some shopping', done: true},
@@ -19,7 +13,6 @@ class ToDoList extends Component {
     }
 
     state = {
-      // tasks: todo,
       tasks: this.props.todo,
       task: '',
     }
@@ -27,7 +20,19 @@ class ToDoList extends Component {
     handleInput = (e) => {
       this.setState({ task: e.target.value });
     }
+
+    refError = createRef()
+
     addTask = (e) => {
+      e.preventDefault()
+
+      if(this.state.task.length === 0) {
+        console.log(this.refError.current)
+        this.refError.current.textContent = '*** Input empty ***'
+        return
+      } else {
+        this.refError.current.textContent = ''
+      }
       const id = Date.now()
       console.log(id)
       this.setState({ 
@@ -38,6 +43,7 @@ class ToDoList extends Component {
         task: ''
       });
     }
+
     toggleTaskDone = (id) => {
       console.log(id)
       // find return new element {}, changing it we change object & reference in state
@@ -53,9 +59,9 @@ class ToDoList extends Component {
       console.log('state', this.state.tasks)
       console.log('props', this.props)
       return (
-        <div className='ToDoContainer'>
-          <h2 className='title'>{this.props.title}</h2> 
-            <div className='tasks'>
+        <ToDoContainer>
+          <Title>{this.props.title}</Title> 
+            <Tasks className='tasks'>
             {
                 this.state.tasks.map(task => (
                     <ToDoItem 
@@ -64,7 +70,13 @@ class ToDoList extends Component {
                     />
                 ))
             }            
-            </div>
+            </Tasks>
+
+            <ErrorDiv 
+              ref={this.refError} 
+              style={{marginTop: '10px'}}
+            ></ErrorDiv>
+
             <FormToDo 
               onHandleInput={this.handleInput}
               taskValue={this.state.task}
@@ -72,7 +84,7 @@ class ToDoList extends Component {
             />
 
      
-        </div>
+        </ToDoContainer>
       )
     }
 }
