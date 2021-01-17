@@ -5,23 +5,30 @@ import {ToDoContainer, Title, Tasks, ErrorDiv} from './ToDoList.css'
 
 class ToDoList extends Component {
 
-    static defaultProps = {
-      todo: [
-        {id: 1, text: 'to do some shopping', done: true},
-        {id: 2, text: 'to do breakfast', done: false},        
-      ]
-    }
-
     state = {
-      tasks: this.props.todo,
+      tasks: [],
       task: '',
     }
+
+    getData = () => {
+      fetch('http://localhost:3004/transactions')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        this.setState({ tasks: data });
+      })      
+    }
+
+    componentDidMount() {
+      console.log('componentDidMount')
+      this.getData()
+    }
   
+    refError = createRef()
+
     handleInput = (e) => {
       this.setState({ task: e.target.value });
     }
-
-    refError = createRef()
 
     addTask = (e) => {
       e.preventDefault()
@@ -33,31 +40,53 @@ class ToDoList extends Component {
       } else {
         this.refError.current.textContent = ''
       }
-      const id = Date.now()
-      console.log(id)
-      this.setState({ 
-        tasks: [
-          ...this.state.tasks, 
-          {text: this.state.task, id: id, done: false}
-        ],
-        task: ''
-      });
+
+      // add task to REST API
+      // -----------------  
+      const taskObj = {
+        text: this.state.task,
+        date: new Date().toLocaleString(),
+        done: false,
+      }
+      fetch('http://localhost:3004/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },         
+        body: JSON.stringify(taskObj)
+      })
+      .then(() => {
+        console.log('Task Added')
+        this.setState({ task: '' });
+        this.getData()
+      })
+      .catch((err) => console.log('Task NOT added', err))          
     }
 
-    toggleTaskDone = (id) => {
-      console.log(id)
-      // find return new element {}, changing it we change object & reference in state
-      const task = this.state.tasks.find(task => task.id === id)
-      task.done = !task.done
-      this.setState({ tasks: [
-        ...this.state.tasks,
-        ] 
-      });
+    removeAll = () => {
+      this.setState({ tasks:  []  });
+    }
+
+    // task const to REST API
+    addJSON = () => {
+      const taskObj = {
+        text: 'New task',
+        date: new Date().toLocaleString(),
+        done: false,
+      }
+      fetch('http://localhost:3004/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },         
+        body: JSON.stringify(taskObj)
+      })
+      .then(() => console.log('Task Added'))
+      .catch((err) => console.log('Task NOT added', err))
     }
   
     render() {
-      console.log('state', this.state.tasks)
-      console.log('props', this.props)
+
       return (
         <ToDoContainer>
           <Title>{this.props.title}</Title> 
@@ -65,8 +94,10 @@ class ToDoList extends Component {
             {
                 this.state.tasks.map(task => (
                     <ToDoItem 
-                      key={task.id} text={task.text} done={task.done}
-                      onToggleTaskDone={() => this.toggleTaskDone(task.id)} 
+                      key={task.id} 
+                      id={task.id}
+                      text={task.text} 
+                      done={task.done}
                     />
                 ))
             }            
@@ -82,6 +113,12 @@ class ToDoList extends Component {
               taskValue={this.state.task}
               onAddTask={this.addTask}
             />
+
+            <br/>
+            <button onClick={this.removeAll}>Remove All tasks</button>
+
+            <br/><br/>
+            <button onClick={this.addJSON}>Add task to REST API</button>
 
      
         </ToDoContainer>

@@ -1,0 +1,28 @@
+pobranie danych z REST API
+- ToDoList.js
+- componentDidMount
+
+dodanie na sztywno task do REST
+- ToDoList.js
+- addJSON - button 
+
+dodanie z Form task do REST
+- ToDoList.js 
+- addTask - POST
+
+zmiana done w REST
+- ToDoItem.js
+- toggleDone - PUT
+
+
+
+
+
+
+
+
+
+
+
+
+
