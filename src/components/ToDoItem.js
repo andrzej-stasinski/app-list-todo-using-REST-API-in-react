@@ -9,8 +9,10 @@ class ToDoItem extends Component {
     }
     toggleDone = () => {
         this.setState({ done: !this.state.done });
+        this.props.onToggleTaskDone()
     }
     render() {
+        // console.log(this.props)
         return (
             <div>
                 <div 
