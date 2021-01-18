@@ -1,16 +1,9 @@
 import React, {Component} from "react";
-import './App.css'
 import ToDoList from './container/ToDoList'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import styled from 'styled-components'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import FormEdit from './components/FormEdit'
-
-const Container = styled.div`
-  text-align: left;
-  padding: 10px;
-  border: 1px blue dotted;
-  background-color: #ddd;
-`
+import NotFound from './components/NotFound'
+import {Container} from './App.css'
 
 const App = () => {
 
@@ -18,8 +11,18 @@ const App = () => {
 
         <Router>
           <Container>
-            <Route path='/'><ToDoList /></Route>
-            <Route path='/edit'><FormEdit /></Route>
+            <Switch>
+              <Route exact path='/'><ToDoList /></Route>
+              {/* <Route exact path='/' component={ToDoList} /> */}
+
+              {/* nie ma props */}
+              {/* <Route path='/edit'><FormEdit /></Route> */}
+              {/* ma props  */}
+              <Route path='/edit/:id' component={FormEdit} />
+
+              {/* <Route><NotFound /></Route>               */}
+              <Route component={NotFound} />              
+            </Switch>
           </Container>          
         </Router>
 

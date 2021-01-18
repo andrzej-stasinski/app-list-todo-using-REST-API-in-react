@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
-import ToDoItem from '../components/ToDoItem'
-import FormToDo from '../components/FormToDo'
-import {ToDoContainer, Title, Tasks, ErrorDiv} from './ToDoList.css'
+import ToDoItem from '../components/ToDoItem/ToDoItem'
+import FormToDo from '../components/FormToDo/FormToDo'
+import {Title, Tasks, ErrorDiv} from './ToDoList.css'
 import * as toDoItemApi from '../helpers/api'
 class ToDoList extends Component {
 
@@ -81,9 +81,9 @@ class ToDoList extends Component {
     }
   
     render() {
-
+      // console.log(this.props)
       return (
-        <ToDoContainer>
+        <div>
           {/* <Title>{this.props.title}</Title>  */}
           <Title>ToDo List</Title> 
             <Tasks className='tasks'>
@@ -114,7 +114,7 @@ class ToDoList extends Component {
               onAddTask={this.addTask}
             />
      
-        </ToDoContainer>
+        </div>
       )
     }
 }
