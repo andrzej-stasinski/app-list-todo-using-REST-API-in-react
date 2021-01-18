@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import styled from 'styled-components'
+// import {Link} from 'react-router-dom'
+// import styled from 'styled-components'
+import {LinkStyled} from './FormEdit.css'
 
-const LinkStyled = styled(Link)`
-    text-decoration: none;
-    color: black;
-    border: 1px solid grey;
-    margin-left: 10px;
-    padding: 0 10px;
-    transition: 0.5s linear color;
-    &:hover {
-        color: red;
-    }
-`
 class FormEdit extends Component {
     render() {
         console.log(this.props)

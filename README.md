@@ -17,6 +17,7 @@
         }
     ]
 * delete task
+* routing for components
 * ...
 * to be continued
 

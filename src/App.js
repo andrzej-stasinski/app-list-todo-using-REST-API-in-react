@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ToDoList from './container/ToDoList'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import FormEdit from './components/FormEdit'
+import FormEdit from './components/FormEdit/FormEdit'
 import NotFound from './components/NotFound'
 import {Container} from './App.css'
 
