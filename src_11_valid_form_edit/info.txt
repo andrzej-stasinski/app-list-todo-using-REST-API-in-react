@@ -1,0 +1,14 @@
+Odliczanie znaków
+-----------------
+FormToDo.css.js - css 
+
+ToDoList.js     - handleInput
+   - tutaj jest warunek zliczania
+   - state znaków - chars
+
+FormToDo        - div
+   - pokazana liczba znaków
+
+
+
+
