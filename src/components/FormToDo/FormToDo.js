@@ -9,6 +9,7 @@ const FormToDo = ({onHandleInput, onAddTask, taskValue, chars}) => {
                 value={taskValue} 
                 onChange={onHandleInput} 
                 className='input'
+                placeholder='type task...'
             /> 
             <Button 
                 type='submit' 

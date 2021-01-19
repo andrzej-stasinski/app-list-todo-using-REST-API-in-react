@@ -3,7 +3,7 @@ import ToDoItem from '../components/ToDoItem/ToDoItem'
 import FormToDo from '../components/FormToDo/FormToDo'
 import {Title, Tasks, ErrorDiv} from './ToDoList.css'
 import * as toDoItemApi from '../helpers/api'
-import './ToDoList.css'
+
 class ToDoList extends Component {
 
     state = {
@@ -24,8 +24,6 @@ class ToDoList extends Component {
     refError = createRef()
 
     handleInput = (e) => {
-      // count chars
-      console.log(e.target.value.length)
       this.setState({ chars: e.target.value.length });
       this.refError.current.textContent = ''
       if(e.target.value.length === 25) {
@@ -39,7 +37,6 @@ class ToDoList extends Component {
       e.preventDefault()
 
       if(this.state.task.length === 0) {
-        console.log(this.refError.current)
         this.refError.current.textContent = '*** Input empty ***'
         return
       } else {
@@ -51,7 +48,6 @@ class ToDoList extends Component {
         date: new Date().toLocaleString(),
         done: false,
       })
-      console.log(task)
       this.setState({ 
         tasks: [...this.state.tasks, task],
         task: '',
@@ -87,7 +83,6 @@ class ToDoList extends Component {
         }
         return task
       })
-      console.log(newTask)
       this.setState({ tasks: newTask });    
     }
   
@@ -95,9 +90,9 @@ class ToDoList extends Component {
       // console.log(this.props)
       return (
         <div>
-          {/* <Title>{this.props.title}</Title>  */}
           <Title>ToDo List</Title> 
-            <Tasks className='tasks'>
+          {/* <div>ToDo List</div>  */}
+            <Tasks>
             {
                 this.state.tasks.map(task => (
                     <ToDoItem 

@@ -1,7 +1,7 @@
 ## react list-todo in REST API
 
 #### progress
-* add task to list
+* add task to list & counting chars
 * mark task done in style as line-through 
 * styles in styled-components - props task done/not, hover, media-queries
 * validate input - prevents you from typing empty input, using Ref
@@ -18,8 +18,9 @@
     ]
 * delete task
 * routing for components
-* ...
-* to be continued
+* edit chosen task & validation
 
+#### Some pictures od app
+![alt text](./pictures/pic1.png)
 
 

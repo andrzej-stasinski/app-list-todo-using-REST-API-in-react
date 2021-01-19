@@ -12,8 +12,8 @@ const App = () => {
         <Router>
           <Container>
             <Switch>
-              <Route exact path='/'><ToDoList /></Route>
-              {/* <Route exact path='/' component={ToDoList} /> */}
+              {/* <Route exact path='/'><ToDoList /></Route> */}
+              <Route exact path='/' component={ToDoList} />
 
               {/* nie ma props */}
               {/* <Route path='/edit'><FormEdit /></Route> */}
