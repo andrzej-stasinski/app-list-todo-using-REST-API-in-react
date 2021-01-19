@@ -29,6 +29,8 @@ class FormEdit extends Component {
         });
     }
 
+    // fetch by helper
+    // -----------------
     SubmitData = async(e) => {
         e.preventDefault()
         const task = this.state.taskItem
@@ -43,6 +45,8 @@ class FormEdit extends Component {
     }
 
     render() {
+        // console.log(this.props)
+        // console.log(this.state.taskItem)
         const id = this.getId()
         return (
             <div>

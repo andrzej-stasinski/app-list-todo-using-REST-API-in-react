@@ -3,11 +3,13 @@ import ToDoItem from '../components/ToDoItem/ToDoItem'
 import FormToDo from '../components/FormToDo/FormToDo'
 import {Title, Tasks, ErrorDiv} from './ToDoList.css'
 import * as toDoItemApi from '../helpers/api'
+import './ToDoList.css'
 class ToDoList extends Component {
 
     state = {
       tasks: [],
       task: '',
+      chars: ''
     }
 
     getData = async () => {   
@@ -22,7 +24,15 @@ class ToDoList extends Component {
     refError = createRef()
 
     handleInput = (e) => {
-      this.setState({ task: e.target.value });
+      // count chars
+      console.log(e.target.value.length)
+      this.setState({ chars: e.target.value.length });
+      this.refError.current.textContent = ''
+      if(e.target.value.length === 25) {
+        this.refError.current.textContent = 'Max 25 znaków'
+        return
+      }
+      this.setState({ task: e.target.value, });
     }
 
     addTask = async (e) => {
@@ -45,6 +55,7 @@ class ToDoList extends Component {
       this.setState({ 
         tasks: [...this.state.tasks, task],
         task: '',
+        chars: '',
       });
     }
 
@@ -112,6 +123,7 @@ class ToDoList extends Component {
               onHandleInput={this.handleInput}
               taskValue={this.state.task}
               onAddTask={this.addTask}
+              chars={this.state.chars}
             />
      
         </div>

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
     margin-top: 5px;
+    position: relative;
 `
 
 export const Button = styled.button`
@@ -28,7 +29,7 @@ export const Button = styled.button`
 `
 
 export const Input = styled.input`
-    padding: 5px;
+    padding: 5px 20px 5px 5px;
     font-size: 18px;
     border-radius: 5px;
     outline: none;
