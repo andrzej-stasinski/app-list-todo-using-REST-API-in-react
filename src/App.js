@@ -6,7 +6,7 @@ import NotFound from './components/NotFound'
 import {Container} from './App.css'
 
 const App = () => {
-
+    console.log(process.env.REACT_APP_REST_API)
     return (
 
         <Router>

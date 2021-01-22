@@ -4,6 +4,9 @@
 /node_modules
 /progress
 /restapi
+.env
+.gitignore
+.git.zip
 /.pnp
 .pnp.js
 

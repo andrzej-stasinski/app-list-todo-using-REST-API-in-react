@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3004/transactions'
+const URL = process.env.REACT_APP_REST_API
 
 export const REST_API_URL = id =>
     id ? `${URL}/${id}` : `${URL}`
