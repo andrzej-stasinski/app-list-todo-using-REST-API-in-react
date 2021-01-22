@@ -1,4 +1,4 @@
-const URL = process.env.REACT_APP_REST_API
+const URL = process.env.REACT_APP_REST_API_LOCALHOST
 
 export const REST_API_URL = id =>
     id ? `${URL}/${id}` : `${URL}`

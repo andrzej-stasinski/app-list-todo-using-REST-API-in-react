@@ -6,21 +6,15 @@ import NotFound from './components/NotFound'
 import {Container} from './App.css'
 
 const App = () => {
-    console.log(process.env.REACT_APP_REST_API)
-    return (
+
+  return (
 
         <Router>
           <Container>
             <Switch>
-              {/* <Route exact path='/'><ToDoList /></Route> */}
-              <Route exact path='/app-list-todo-using-REST-API-in-react/' component={ToDoList} />
+              <Route exact path='/' component={ToDoList} />
 
-              {/* nie ma props */}
-              {/* <Route path='/edit'><FormEdit /></Route> */}
-              {/* ma props  */}
-              <Route path='/app-list-todo-using-REST-API-in-react/edit/:id' component={FormEdit} />
-
-              {/* <Route><NotFound /></Route>               */}
+              <Route path='/edit/:id' component={FormEdit} />
               <Route component={NotFound} />              
             </Switch>
           </Container>          

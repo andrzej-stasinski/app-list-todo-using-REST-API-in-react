@@ -7,6 +7,7 @@
 * validate input - prevents you from typing empty input, using Ref
 * get data from REST API & add task to REST & change property done in REST API
   - server REST API is needed
+  - run REST server as - http://localhost:3004/transactions
   - data in REST as example
   - [
         {
