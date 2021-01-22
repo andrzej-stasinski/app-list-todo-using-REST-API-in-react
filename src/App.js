@@ -13,12 +13,12 @@ const App = () => {
           <Container>
             <Switch>
               {/* <Route exact path='/'><ToDoList /></Route> */}
-              <Route exact path='/' component={ToDoList} />
+              <Route exact path='/app-list-todo-using-REST-API-in-react/' component={ToDoList} />
 
               {/* nie ma props */}
               {/* <Route path='/edit'><FormEdit /></Route> */}
               {/* ma props  */}
-              <Route path='/edit/:id' component={FormEdit} />
+              <Route path='/app-list-todo-using-REST-API-in-react/edit/:id' component={FormEdit} />
 
               {/* <Route><NotFound /></Route>               */}
               <Route component={NotFound} />              
