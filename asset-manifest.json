@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/app-list-todo-using-REST-API-in-react/static/css/main.b11fa65a.chunk.css",
-    "main.js": "/app-list-todo-using-REST-API-in-react/static/js/main.743b832c.chunk.js",
-    "main.js.map": "/app-list-todo-using-REST-API-in-react/static/js/main.743b832c.chunk.js.map",
+    "main.js": "/app-list-todo-using-REST-API-in-react/static/js/main.dfb614b2.chunk.js",
+    "main.js.map": "/app-list-todo-using-REST-API-in-react/static/js/main.dfb614b2.chunk.js.map",
     "runtime-main.js": "/app-list-todo-using-REST-API-in-react/static/js/runtime-main.316bb2d9.js",
     "runtime-main.js.map": "/app-list-todo-using-REST-API-in-react/static/js/runtime-main.316bb2d9.js.map",
     "static/js/2.6de27c9a.chunk.js": "/app-list-todo-using-REST-API-in-react/static/js/2.6de27c9a.chunk.js",
     "static/js/2.6de27c9a.chunk.js.map": "/app-list-todo-using-REST-API-in-react/static/js/2.6de27c9a.chunk.js.map",
     "index.html": "/app-list-todo-using-REST-API-in-react/index.html",
-    "precache-manifest.d84e6e6e259bc1411378e4f967254c7a.js": "/app-list-todo-using-REST-API-in-react/precache-manifest.d84e6e6e259bc1411378e4f967254c7a.js",
+    "precache-manifest.5e4ec4fb4792a738f400188ec2e64a0f.js": "/app-list-todo-using-REST-API-in-react/precache-manifest.5e4ec4fb4792a738f400188ec2e64a0f.js",
     "service-worker.js": "/app-list-todo-using-REST-API-in-react/service-worker.js",
     "static/css/main.b11fa65a.chunk.css.map": "/app-list-todo-using-REST-API-in-react/static/css/main.b11fa65a.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.316bb2d9.js",
     "static/js/2.6de27c9a.chunk.js",
     "static/css/main.b11fa65a.chunk.css",
-    "static/js/main.743b832c.chunk.js"
+    "static/js/main.dfb614b2.chunk.js"
   ]
 }
